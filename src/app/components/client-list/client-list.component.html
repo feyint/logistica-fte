@@ -1,0 +1,21 @@
+<div class="container mt-3">
+  <h2>Listado de Clientes</h2>
+  <button class="btn btn-primary mb-3" routerLink="/client/new">Nuevo Cliente</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.nombre }}</td>
+        <td>
+          <button class="btn btn-info" (click)="editClient(client.id)">Editar</button>
+          <button class="btn btn-danger" (click)="deleteClient(client.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" class="form-control" formControlName="nombre">
+      <div *ngIf="clientForm?.get('nombre')?.errors?.['required'] && clientForm?.get('nombre')?.touched" class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="documento">Documento</label>
+      <input type="text" id="documento" class="form-control" formControlName="documento">
+      <div *ngIf="clientForm?.get('documento')?.errors?.['required'] && clientForm?.get('documento')?.touched" class="text-danger">
+        El documento es obligatorio.
+      </div>
+      <div *ngIf="clientForm?.get('documento')?.errors?.['required'] && clientForm?.get('documento')?.touched" class="text-danger">
+        El documento debe tener al menos 5 caracteres.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+      <div *ngIf="clientForm?.get('email')?.errors?.['required'] && clientForm?.get('email')?.touched" class="text-danger">
+        El email es obligatorio.
+      </div>
+      <div *ngIf="clientForm?.get('email')?.errors?.['email'] && clientForm?.get('email')?.touched" class="text-danger">
+        El formato del email no es válido.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input type="text" id="telefono" class="form-control" formControlName="telefono">
+      <div *ngIf="clientForm?.get('telefono')?.errors?.['required'] && clientForm?.get('telefono')?.touched" class="text-danger">
+        El teléfono es obligatorio.
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-success" [disabled]="clientForm.invalid">Guardar</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+  </form>
+  

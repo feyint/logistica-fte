@@ -1,0 +1,60 @@
+<!-- delivery-form.component.html -->
+<form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="tipoProducto" class="form-label">Tipo de Producto</label>
+      <input type="text" class="form-control" id="tipoProducto" formControlName="tipoProducto">
+      <div *ngIf="deliveryForm.get('tipoProducto')?.touched && deliveryForm.get('tipoProducto')?.errors?.['required']" class="text-danger">
+        El tipo de producto es obligatorio.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">Cantidad</label>
+      <input type="number" class="form-control" id="cantidad" formControlName="cantidad">
+      <div *ngIf="deliveryForm.get('cantidad')?.touched && deliveryForm.get('cantidad')?.errors?.['required']" class="text-danger">
+        La cantidad es obligatoria.
+      </div>
+      <div *ngIf="deliveryForm.get('cantidad')?.touched && deliveryForm.get('cantidad')?.errors?.['min']" class="text-danger">
+        La cantidad debe ser al menos 1.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="fechaRegistro" class="form-label">Fecha de Registro</label>
+      <input type="date" class="form-control" id="fechaRegistro" formControlName="fechaRegistro">
+      <div *ngIf="deliveryForm.get('fechaRegistro')?.touched && deliveryForm.get('fechaRegistro')?.errors?.['required']" class="text-danger">
+        La fecha de registro es obligatoria.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="fechaEntrega" class="form-label">Fecha de Entrega</label>
+      <input type="date" class="form-control" id="fechaEntrega" formControlName="fechaEntrega">
+      <div *ngIf="deliveryForm.get('fechaEntrega')?.touched && deliveryForm.get('fechaEntrega')?.errors?.['required']" class="text-danger">
+        La fecha de entrega es obligatoria.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="direccionEntrega" class="form-label">Dirección de Entrega</label>
+      <input type="text" class="form-control" id="direccionEntrega" formControlName="direccionEntrega">
+      <div *ngIf="deliveryForm.get('direccionEntrega')?.touched && deliveryForm.get('direccionEntrega')?.errors?.['required']" class="text-danger">
+        La dirección de entrega es obligatoria.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="precioEnvio" class="form-label">Precio de Envío</label>
+      <input type="number" class="form-control" id="precioEnvio" formControlName="precioEnvio">
+      <div *ngIf="deliveryForm.get('precioEnvio')?.touched && deliveryForm.get('precioEnvio')?.errors?.['required']" class="text-danger">
+        El precio de envío es obligatorio.
+      </div>
+      <div *ngIf="deliveryForm.get('precioEnvio')?.touched && deliveryForm.get('precioEnvio')?.errors?.['min']" class="text-danger">
+        El precio de envío no puede ser negativo.
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="deliveryForm.invalid">Guardar</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+  </form>
+  
