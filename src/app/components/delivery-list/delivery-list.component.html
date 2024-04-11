@@ -1,25 +1,24 @@
+<app-navbar></app-navbar>
 <div class="container mt-3">
     <button routerLink="/delivery/form" class="btn btn-primary">Nueva Entrega</button>
     <h2>Listado de Entregas</h2>
     <table class="table">
       <thead>
         <tr>
-          <th>Tipo de Producto</th>
+          <th>Producto</th>
           <th>Cantidad</th>
           <th>Fecha de Registro</th>
-          <th>Fecha de Entrega</th>
-          <th>Dirección de Entrega</th>
+          <th>Fecha de Entrega</th>          
           <th>Precio de Envío</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let delivery of deliveries">
-          <td>{{ delivery.tipoProducto }}</td>
+          <td>{{ delivery.producto.nombre }}</td>
           <td>{{ delivery.cantidad }}</td>
           <td>{{ delivery.fechaRegistro | date }}</td>
-          <td>{{ delivery.fechaEntrega | date }}</td>
-          <td>{{ delivery.direccionEntrega }}</td>
+          <td>{{ delivery.fechaEntrega | date }}</td>          
           <td>{{ delivery.precioEnvio }}</td>
           <td>
             <button class="btn btn-info" (click)="editDelivery(delivery.id)">Editar</button>

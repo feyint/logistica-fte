@@ -11,6 +11,8 @@ import { ClientFormComponent } from './components/client-form/client-form.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeliveryListComponent } from './components/delivery-list/delivery-list.component';
 import { DeliveryFormComponent } from './components/delivery-form/delivery-form.component';
+import { AccesoComponent } from './components/acceso/acceso.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DeliveryFormComponent } from './components/delivery-form/delivery-form.
     ClientListComponent,
     ClientFormComponent,
     DeliveryListComponent,
-    DeliveryFormComponent
+    DeliveryFormComponent,
+    AccesoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

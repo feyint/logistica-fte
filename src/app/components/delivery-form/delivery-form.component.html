@@ -1,13 +1,66 @@
 <!-- delivery-form.component.html -->
+<app-navbar></app-navbar>
 <form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label for="tipoProducto" class="form-label">Tipo de Producto</label>
-      <input type="text" class="form-control" id="tipoProducto" formControlName="tipoProducto">
-      <div *ngIf="deliveryForm.get('tipoProducto')?.touched && deliveryForm.get('tipoProducto')?.errors?.['required']" class="text-danger">
-        El tipo de producto es obligatorio.
-      </div>
-    </div>
+  <div class="mb-3">
+    <label for="clienteId">Cliente</label>
+    <select class="form-control" id="cliente" formControlName="cliente">
+      <option value="" disabled>Seleccione un cliente</option>
+      <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="productoId">Producto</label>
+    <select class="form-control" id="producto" formControlName="producto">
+      <option value="" disabled>Seleccione un producto</option>
+      <option *ngFor="let producto of productos" [value]="producto.id">{{ producto.nombre }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="tipo">Tipo envío</label>
+    <select class="form-control" id="tipo" formControlName="tipo">
+      <option value="" disabled>Seleccione un producto</option>
+      <option [value]="1">Terrestre</option>
+      <option [value]="2">Marítimo</option>
+    </select>
+  </div>
   
+
+  <div class="mb-3">
+    <label for="placa" class="form-label">Placa</label>
+    <input type="text" class="form-control" id="placa" formControlName="placa">
+    <div *ngIf="deliveryForm.get('placa')?.touched && deliveryForm.get('placa')?.errors?.['required']" class="text-danger">
+      La placa es obligatoria.
+    </div>    
+    <div *ngIf="deliveryForm.get('placa')?.touched && deliveryForm.get('placa')?.errors?.['pattern']" class="text-danger">
+      La placa debe tener el formato de 3 letras seguidas por 3 números.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="flota" class="form-label">Número de flota</label>
+    <input type="text" class="form-control" id="flota" formControlName="flota">
+    <div *ngIf="deliveryForm.get('flota')?.touched && deliveryForm.get('flota')?.errors?.['required']" class="text-danger">
+      El  número de flota es obligatorio
+    </div>    
+    <div *ngIf="deliveryForm.get('flota')?.touched && deliveryForm.get('flota')?.errors?.['pattern']" class="text-danger">
+      El número de flota debe tener el formato de 3 letras, seguidas de 4 números y finalizando con una letra.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="cantidad" class="form-label">Cantidad</label>
+    <input type="number" class="form-control" id="cantidad" formControlName="cantidad">
+    <div *ngIf="deliveryForm.get('cantidad')?.touched && deliveryForm.get('cantidad')?.errors?.['required']" class="text-danger">
+      La cantidad es obligatoria.
+    </div>
+    <div *ngIf="deliveryForm.get('cantidad')?.touched && deliveryForm.get('cantidad')?.errors?.['min']" class="text-danger">
+      La cantidad debe ser al menos 1.
+    </div>
+  </div>
+
+
     <div class="mb-3">
       <label for="cantidad" class="form-label">Cantidad</label>
       <input type="number" class="form-control" id="cantidad" formControlName="cantidad">
@@ -35,14 +88,7 @@
       </div>
     </div>
   
-    <div class="mb-3">
-      <label for="direccionEntrega" class="form-label">Dirección de Entrega</label>
-      <input type="text" class="form-control" id="direccionEntrega" formControlName="direccionEntrega">
-      <div *ngIf="deliveryForm.get('direccionEntrega')?.touched && deliveryForm.get('direccionEntrega')?.errors?.['required']" class="text-danger">
-        La dirección de entrega es obligatoria.
-      </div>
-    </div>
-  
+     
     <div class="mb-3">
       <label for="precioEnvio" class="form-label">Precio de Envío</label>
       <input type="number" class="form-control" id="precioEnvio" formControlName="precioEnvio">
@@ -51,6 +97,20 @@
       </div>
       <div *ngIf="deliveryForm.get('precioEnvio')?.touched && deliveryForm.get('precioEnvio')?.errors?.['min']" class="text-danger">
         El precio de envío no puede ser negativo.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="numeroGuia" class="form-label">Número de guia</label>
+      <input type="text" class="form-control" id="numeroGuia" formControlName="numeroGuia">
+      <div *ngIf="deliveryForm.get('numeroGuia')?.touched && deliveryForm.get('numeroGuia')?.errors?.['required']" class="text-danger">
+        El  número de guía es obligatorio
+      </div>    
+      <div *ngIf="deliveryForm.get('numeroGuia')?.touched && deliveryForm.get('numeroGuia')?.errors?.['minLength']" class="text-danger">
+        Debe tener 10 digitos
+      </div>
+      <div *ngIf="deliveryForm.get('numeroGuia')?.touched && deliveryForm.get('numeroGuia')?.errors?.['maxLength']" class="text-danger">
+        Debe tener 10 digitos
       </div>
     </div>
   

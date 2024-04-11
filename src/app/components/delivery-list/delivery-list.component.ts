@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./delivery-list.component.css']
 })
 export class DeliveryListComponent implements OnInit {
-  deliveries: Delivery[] = [];
+  deliveries: any[] = [];
 
   constructor(private deliveryService: DeliveryService, private router: Router) { }
 
